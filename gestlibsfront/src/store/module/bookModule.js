@@ -24,9 +24,10 @@ const mutations = {
 };
 
 const actions = {
-  async fetchBooks({ commit, state }) {
+  async fetchBooks({ commit, state },page =1 ) {
+    console.log( page )
     try {
-      const books = await bookService.getBooks(state.categoryFilter);
+      const books = await bookService.getBooks(state.categoryFilter,  page );
       console.log(books);
       commit("SET_BOOKS", books);
     } catch (error) {

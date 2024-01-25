@@ -109,6 +109,14 @@ export default {
     filterBooks() {
       this.fetchBooks(); // Llama a la acción para obtener los libros con el filtro aplicado
     },
+    async fetchPage(pageNumber) {
+    try {
+      // Realiza la solicitud para obtener los datos de la página específica
+      await this.$store.dispatch('book/fetchBooks',  pageNumber );
+    } catch (error) {
+      console.error('Error fetching page:', error);
+    }
+  },
   },
 };
 </script>
